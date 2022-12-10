@@ -12,7 +12,7 @@ export default function Home() {
                 <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                     <div>
                         <div className="flex items-center justify-between py-3 md:py-3 md:block">
-                            <Link href="/" className="text-2xl text-forest-100 hover:text-forest-200 duration-300 font-bold">{APP_NAME}</Link>
+                            <Link href="/" className="text-2xl text-forest-100 hover:text-forest-200 duration-300 font-bold">CoursesDB</Link>
                             <div className="md:hidden">
                                 <button
                                     className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"

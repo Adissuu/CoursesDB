@@ -11,11 +11,13 @@ router.post('/signup', userSignupValidator, runValidation, signup);
 router.post('/signIn', userSignInValidator, runValidation, signIn);
 router.get('/signOut', signOut);
 
+
+
 //test
-router.get('/secret', requireSignIn, (req, res) => {
-    res.json({
-        user: req.user
-    });
-});
+// router.get('/secret', requireSignIn, (req, res) => {
+//     res.json({
+//         user: req.auth
+//     });
+// });
 
 module.exports = router;
