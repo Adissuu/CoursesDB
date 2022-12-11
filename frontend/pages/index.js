@@ -4,14 +4,9 @@ import Link from "next/link";
 const Index = () => {
     return (
         <Layout>
-            <h1 className="text-2xl">Index Page</h1>
-            <Link href="/signup">
-                Signup
-            </Link>
-            <br></br>
-            <Link href="/signin">
-                Signin
-            </Link>
+            <div className="bg-azur-200 h-screen">
+                <h1 className="text-forest-300 text-xl font-bold">Database enabling access to courses for continuing education</h1>
+            </div>
         </Layout>
     )
 }
