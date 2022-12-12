@@ -15,6 +15,9 @@ module.exports = {
           100: '#011120',
           200: '#05386B'
         }
+      },
+      letterSpacing: {
+        widest: '.15em',
       }
     },
   },

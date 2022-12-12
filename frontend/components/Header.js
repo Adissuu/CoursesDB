@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import { APP_NAME } from '../config';
 import { signout, isAuth } from '../actions/auth';
 import Router from 'next/router';
+
+
 
 export default function Home() {
     const [navbar, setNavbar] = useState(false);
@@ -12,7 +13,7 @@ export default function Home() {
                 <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                     <div>
                         <div className="flex items-center justify-between py-3 md:py-3 md:block">
-                            <Link href="/" className="text-2xl text-forest-100 hover:text-forest-200 duration-300 font-bold">CoursesDB</Link>
+                            <Link href="/" className={`text-3xl text-forest-100 hover:text-forest-200 duration-300 tracking-widest`}>CoursesDB</Link>
                             <div className="md:hidden">
                                 <button
                                     className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
