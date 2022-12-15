@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'signupChar': "url('../public/images/grid.svg')"
+        'signupChar': "url('../public/images/grid.svg')",
       },
       colors: {
         'forest': {
@@ -18,7 +18,7 @@ module.exports = {
       },
       letterSpacing: {
         widest: '.15em',
-      }
+      },
     },
   },
   variants: {

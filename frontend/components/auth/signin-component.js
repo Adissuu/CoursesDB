@@ -62,7 +62,7 @@ const SignupComponent = () => {
     const signinForm = () => {
         return (
             <div className="form-box backdrop-blur-md border-2 p-5 rounded-md w-96">
-                <h1 className='flex justify-center text-white text-2xl underline my-3'>Sign in</h1>
+                <h1 className='flex justify-center text-white text-2xl underline my-3'>Sign In</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group relative z-0 mb-6 w-full group">
                         <input value={email}

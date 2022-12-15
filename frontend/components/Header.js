@@ -2,8 +2,11 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { signout, isAuth } from '../actions/auth';
 import Router from 'next/router';
+import nProgress from 'nprogress';
 
-
+Router.onRouteChangeStart = url => nProgress.start()
+Router.onRouteChangeComplete = url => nProgress.done()
+Router.onRouteChangeError = url => nProgress.done()
 
 export default function Home() {
     const [navbar, setNavbar] = useState(false);
@@ -71,12 +74,22 @@ export default function Home() {
                                             </Link>
                                         </li>
                                     </>)}
-
+                                {isAuth() && isAuth().role == 0 && (
+                                    <Link href="/user" className='content-center text-white hover:text-forest-200 duration-300'>
+                                        {`${isAuth().name}'s Dashboard`}
+                                    </Link>
+                                )}
+                                {isAuth() && isAuth().role == 1 && (
+                                    <Link href="/admin" className='content-center text-white hover:text-forest-200 duration-300'>
+                                        Admin
+                                    </Link>
+                                )}
                                 {isAuth() && (
                                     <a className='btn bg-forest-100 p-1 content-center rounded-md text-white hover:bg-forest-200 duration-300 cursor-pointer' onClick={() => signout(() => Router.replace('/signin'))}>
                                         Signout
                                     </a>
                                 )}
+
                             </ul>
                         </div>
                     </div>
