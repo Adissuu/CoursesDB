@@ -2,37 +2,37 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import { getCookie } from '../../actions/auth';
-import { create, getCategories, removeCategory } from '../../actions/category';
+import { create, getTags, removeTag } from '../../actions/tag';
 
-const Category = () => {
+const Tag = () => {
     const [values, setValues] = useState({
         name: '',
         error: false,
         success: false,
-        categories: [],
+        tags: [],
         removed: false,
         reload: false
     });
 
-    const { name, error, success, categories, removed, reload } = values;
+    const { name, error, success, tags, removed, reload } = values;
     const token = getCookie('token');
 
     useEffect(() => {
-        loadCategories();
+        loadTags();
     }, [reload]);
 
-    const loadCategories = () => {
-        getCategories().then(data => {
+    const loadTags = () => {
+        getTags().then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                setValues({ ...values, categories: data });
+                setValues({ ...values, tags: data });
             }
         });
     };
 
-    const showCategories = () => {
-        return categories.map((c, i) => {
+    const showTags = () => {
+        return tags.map((c, i) => {
             return (
                 <button
                     onDoubleClick={() => deleteConfirm(c.slug)}
@@ -47,15 +47,15 @@ const Category = () => {
     };
 
     const deleteConfirm = slug => {
-        let answer = window.confirm('Are you sure you want to delete this category?');
+        let answer = window.confirm('Are you sure you want to delete this tag?');
         if (answer) {
-            deleteCategory(slug);
+            deleteTag(slug);
         }
     };
 
-    const deleteCategory = slug => {
+    const deleteTag = slug => {
         // console.log('delete', slug);
-        removeCategory(slug, token).then(data => {
+        removeTag(slug, token).then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
@@ -66,7 +66,7 @@ const Category = () => {
 
     const clickSubmit = e => {
         e.preventDefault();
-        // console.log('create category', name);
+        // console.log('create tag', name);
         create({ name }, token).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error, success: false });
@@ -82,19 +82,19 @@ const Category = () => {
 
     const showSuccess = () => {
         if (success) {
-            return <p className="absolute text-white">Category is created</p>;
+            return <p className="text-white">Tag is created</p>;
         }
     };
 
     const showError = () => {
         if (error) {
-            return <p className="text-white">Category already exist</p>;
+            return <p className="text-white">Tag already exists</p>;
         }
     };
 
     const showRemoved = () => {
         if (removed) {
-            return <p className="text-white">Category is removed</p>;
+            return <p className="text-white">Tag is removed</p>;
         }
     };
 
@@ -102,14 +102,14 @@ const Category = () => {
         setValues({ ...values, error: false, success: false, removed: '' });
     };
 
-    const newCategoryForm = () => (
+    const newTagForm = () => (
         <>
-            <h1 className='text-center text-white text-xl mb-4'>Categories</h1>
+            <h1 className='text-center text-white text-xl mb-4'>Tags</h1>
             <form onSubmit={clickSubmit} className='text-forest-100'>
                 <div className='flex justify-center'>
                     <label className="bg-azur-100 mr-1 border-2 border-azur-100">Name:</label>
                     <input type="text" className="bg-azur-100 border-2 rounded-lg px-1
-                    border-azur-100 focus:border-forest-100 focus:outline-0" placeholder='Category' onChange={handleChange} value={name} required />
+                    border-azur-100 focus:border-forest-100 focus:outline-0" placeholder='Tag' onChange={handleChange} value={name} required />
                 </div>
                 <div>
                     <div className="flex justify-center">
@@ -124,17 +124,17 @@ const Category = () => {
 
     return (
         <>
-            <div className="p-4 bg-azur-100 mb-4 mx-10 rounded-lg">
+            <div className="p-4 bg-azur-100 mx-10 rounded-lg">
                 {showSuccess()}
                 {showError()}
                 {showRemoved()}
-                <div onMouseMove={mouseMoveHandler} className="mb-1">
-                    {newCategoryForm()}
-                    {showCategories()}
+                <div onMouseMove={mouseMoveHandler}>
+                    {newTagForm()}
+                    {showTags()}
                 </div>
             </div>
         </>
     );
 };
 
-export default Category;
+export default Tag;

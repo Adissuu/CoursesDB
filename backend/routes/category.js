@@ -5,7 +5,7 @@ const { create, list, read, remove } = require('../controllers/category');
 //validators
 const { runValidation } = require('../validators');
 const { categoryCreateValidator } = require('../validators/category');
-const { requireSignIn, authMiddleware, adminMiddleware } = require('../controllers/auth');
+const { requireSignIn, adminMiddleware } = require('../controllers/auth');
 
 
 router.post('/category', categoryCreateValidator, requireSignIn, adminMiddleware, create);
