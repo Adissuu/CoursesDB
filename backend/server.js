@@ -6,7 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config()
 //bring routes
-const coursesRoutes = require('./routes/courses');
+const courseRoutes = require('./routes/course');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const categoryRoutes = require('./routes/category');
@@ -34,7 +34,7 @@ if (process.env.NODE_ENV == 'development') {
 
 }
 //routes middleware
-app.use('/api', coursesRoutes);
+app.use('/api', courseRoutes);
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
 app.use('/api', categoryRoutes);
