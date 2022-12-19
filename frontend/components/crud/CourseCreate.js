@@ -9,6 +9,8 @@ import { createCourse } from "../../actions/course";
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 import '../../node_modules/react-quill/dist/quill.snow.css'
 
+
+
 const CreateCourse = ({ router }) => {
 
     const [body, setBody] = useState({});
@@ -21,6 +23,12 @@ const CreateCourse = ({ router }) => {
         hidePublishButton: false
     })
 
+    useEffect(() => {
+        setValues({ ...values, formData: new FormData() });
+        //initCategories();
+        //initTags();
+    }, [router]);
+
     const { error, sizeError, success, formData, title, hidePublishButton } = values
 
     const publishCourse = (e) => {
@@ -28,26 +36,37 @@ const CreateCourse = ({ router }) => {
         console.log('ready')
     }
 
-    const handleChange = name => event => {
-        console.log(event.target.value)
-    }
+    const handleChange = name => e => {
+        console.log(e.target.value);
+        const value = e.target.value;
+        formData.set(name, value);
+        setValues({ ...values, [name]: value, formData, error: '' });
+    };
 
-    const handleBody = event => {
-        console.log(event);
-    }
+    const handleBody = e => {
+        // console.log(e);
+        setBody(e);
+        formData.set('body', e);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('blog', JSON.stringify(e));
+        }
+    };
 
     const createCourseForm = () => {
         return (
             <form onSubmit={publishCourse}>
-                <div className="">
-                    <label>Title</label>
-                    <input type="text" value={title} placeholder="title" onChange={handleChange('title')} />
+                <div className="mb-2">
+                    <label className="mx-2 text-lg text-forest-100">Course:</label>
+                    <input type="text" className="bg-azur-100 border-2 text-white w-10/12 rounded-lg px-1
+                    border-azur-100 focus:border-forest-100 focus:outline-0" placeholder="Title" value={title} onChange={handleChange('title')} />
                 </div>
                 <div className="">
-                    <ReactQuill value={body} placeholder='Course goes here' onChange={handleBody} />
+                    <ReactQuill
+                        className="text-white mx-2"
+                        modules={CreateCourse.modules} formats={CreateCourse.formats} value={body} onChange={handleBody} />
                 </div>
-                <div className="">
-                    <button type="submit">Publish</button>
+                <div className="text-center text-2xl mt-4">
+                    <button type="submit" className="border-2 rounded-lg border-forest-100 border-solid w-64 mb-4 text-center text-forest-100 hover:text-azur-100 hover:bg-forest-100">Publish</button>
                 </div>
             </form>
         );
@@ -87,6 +106,5 @@ CreateCourse.formats = [
     'link',
     'code-block'
 ];
-
 
 export default withRouter(CreateCourse);

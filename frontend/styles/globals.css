@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* SCROLL BAR */
 body::-webkit-scrollbar {
     width: 6px;
     /* width of the entire scrollbar */
@@ -19,6 +21,20 @@ body::-webkit-scrollbar-thumb {
     /* roundness of the scroll thumb */
 }
 
+/* PROGRESS BAR */
 #nprogress .bar {
     background-color: #1BD175 !important;
+}
+
+
+/* REACT QUILL*/
+.ql-toolbar {
+    background-color: #f9fff6;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.ql-editor {
+    background-color: #011120;
+    font-family: 'Courier New', Courier, monospace;
 }
