@@ -38,7 +38,7 @@ const Category = () => {
                     onDoubleClick={() => deleteConfirm(c.slug)}
                     title="Double click to delete"
                     key={i}
-                    className="text-white border-2 border-forest-100 rounded-lg p-1 hover:bg-forest-100 hover:text-azur-100 mr-1 ml-1 mt-3"
+                    className="text-xl text-white border-2 border-forest-100 rounded-lg p-2 hover:bg-forest-100 hover:text-azur-100 mr-1 ml-1 mt-3"
                 >
                     {c.name}
                 </button>
@@ -104,16 +104,16 @@ const Category = () => {
 
     const newCategoryForm = () => (
         <>
-            <h1 className='text-center text-white text-xl mb-4'>Categories</h1>
+            <h1 className='text-center text-white text-2xl mb-4'>Categories</h1>
             <form onSubmit={clickSubmit} className='text-forest-100'>
                 <div className='flex justify-center'>
-                    <label className="bg-azur-100 mr-1 border-2 border-azur-100">Name:</label>
-                    <input type="text" className="bg-azur-100 border-2 rounded-lg px-1
+                    <label className="bg-azur-100 mr-1 border-2 border-azur-100 text-xl">Name:</label>
+                    <input type="text" className="bg-azur-100 border-2 text-xl rounded-lg px-1
                     border-azur-100 focus:border-forest-100 focus:outline-0" placeholder='Category' onChange={handleChange} value={name} required />
                 </div>
                 <div>
                     <div className="flex justify-center">
-                        <button type="submit" className="text-center hover:text-forest-200">
+                        <button type="submit" className="border-2 mt-4 border-forest-100 border-solid p-1 text-2xl content-center rounded-md text-white hover:bg-forest-100 hover:text-azur-100 duration-300 cursor-pointer">
                             Create
                         </button>
                     </div>

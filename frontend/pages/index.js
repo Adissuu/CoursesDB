@@ -15,12 +15,12 @@ const Index = () => {
                     <Hero className="flex-shrink-0" width={275}></Hero>
 
                     <div className="tracking-wider">
-                        <h1 className={`text-forest-100 text-xl my-8 font-bold`}>Database enabling access to courses for continuing education</h1>
-                        <h1 className="text-forest-300 text-sm my-4 font-bold">As a Concordia student, this database will be mostly filled with Concordia courses from Software Engineering, but if you feel like adding content to the page, please send a message!</h1>
-                        <div className="w-96 flex gap-3">
-                            <Link href="https://github.com/Adissuu/CoursesDB" target="_blank" className="w-6"><GitHub></GitHub></Link>
-                            <Link href="https://www.linkedin.com/in/gabriel-dubois-soen/" target="_blank" className="w-6"><Linkedin></Linkedin></Link>
-                            <Link href="mailto: coursesdbconco@gmail.com" className="w-6"><Mail></Mail></Link>
+                        <h1 className={`text-forest-100 text-4xl my-8`}>Database enabling access to courses for continuing education</h1>
+                        <h1 className="text-forest-300 text-2xl my-4 ">As a Concordia student, this database will be mostly filled with Concordia courses from Software Engineering, but if you feel like adding content to the page, please send a message!</h1>
+                        <div className="w-96 flex gap-6">
+                            <Link href="https://github.com/Adissuu/CoursesDB" target="_blank" className="w-10"><GitHub></GitHub></Link>
+                            <Link href="https://www.linkedin.com/in/gabriel-dubois-soen/" target="_blank" className="w-10"><Linkedin></Linkedin></Link>
+                            <Link href="mailto: coursesdbconco@gmail.com" className="w-10"><Mail></Mail></Link>
                         </div>
                     </div>
                 </div>

@@ -6,7 +6,7 @@ const Signin = () => {
     return (
         <Layout>
             <div className="
-            grid justify-center content-center bg-signupChar h-screen">
+              flex flex-row items-center align-center justify-center bg-signupChar h-screen">
                 <SigninComponent className="z-auto" />
             </div>
         </Layout>

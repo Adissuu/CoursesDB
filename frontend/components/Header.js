@@ -13,13 +13,15 @@ export default function Home() {
     return (
         <div>
             <nav className="w-full bg-azur-200 shadow">
-                <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+                <div className="justify-between px-4 mx-auto  md:items-center md:flex md:px-8">
                     <div>
                         <div className="flex items-center justify-between py-3 md:py-3 md:block">
-                            <Link href="/" className={`text-3xl text-forest-100 hover:text-forest-200 duration-300 tracking-widest`}>CoursesDB</Link>
+                            <Link href="/" className={`text-5xl text-forest-100 hover:text-forest-200       
+                             duration-300 tracking-widest`}>CoursesDB</Link>
                             <div className="md:hidden">
                                 <button
-                                    className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                                    className="p-2 text-gray-700 rounded-md outline-none focus:border-gray- 
+                                    400 focus:border"
                                     onClick={() => setNavbar(!navbar)}
                                 >
                                     {navbar ? (
@@ -64,28 +66,28 @@ export default function Home() {
                                 {!isAuth() && (
                                     <>
                                         <li className="text-white">
-                                            <Link href="/signin" className=' content-center text-white hover:text-forest-200 duration-300'>
+                                            <Link href="/signin" className='text-2xl content-center text-white hover:text-forest-200 duration-300'>
                                                 Sign In
                                             </Link>
                                         </li>
                                         <li className="text-white">
-                                            <Link href="/signup" className='btn bg-forest-100 p-1 content-center rounded-md text-white hover:bg-forest-200 duration-300'>
+                                            <Link href="/signup" className='btn bg-forest-100 p-1 text-2xl content-center rounded-md text-white hover:bg-forest-200 duration-300'>
                                                 Sign Up
                                             </Link>
                                         </li>
                                     </>)}
                                 {isAuth() && isAuth().role == 0 && (
-                                    <Link href="/user" className='content-center text-white hover:text-forest-200 duration-300'>
+                                    <Link href="/user" className='text-2xl content-center text-white hover:text-forest-200 duration-300'>
                                         {`${isAuth().name}'s Dashboard`}
                                     </Link>
                                 )}
                                 {isAuth() && isAuth().role == 1 && (
-                                    <Link href="/admin" className='content-center text-white hover:text-forest-200 duration-300'>
+                                    <Link href="/admin" className='text-2xl content-center text-white hover:text-forest-200 duration-300'>
                                         Admin
                                     </Link>
                                 )}
                                 {isAuth() && (
-                                    <a className='btn bg-forest-100 p-1 content-center rounded-md text-white hover:bg-forest-200 duration-300 cursor-pointer' onClick={() => signout(() => Router.replace('/signin'))}>
+                                    <a className='btn bg-forest-100 p-1 text-2xl content-center rounded-md text-white hover:bg-forest-200 duration-300 cursor-pointer' onClick={() => signout(() => Router.replace('/signin'))}>
                                         Signout
                                     </a>
                                 )}

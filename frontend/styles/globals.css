@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    background-color: #05386B;
+}
+
 
 /* SCROLL BAR */
 body::-webkit-scrollbar {
@@ -26,6 +30,11 @@ body::-webkit-scrollbar-thumb {
     background-color: #1BD175 !important;
 }
 
+/* Signin Signup */
+.acc {
+    margin-left: 35vw;
+    margin-right: 35vw;
+}
 
 /* REACT QUILL*/
 .ql-toolbar {

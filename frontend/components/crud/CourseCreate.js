@@ -56,8 +56,8 @@ const CreateCourse = ({ router }) => {
         return (
             <form onSubmit={publishCourse}>
                 <div className="mb-2">
-                    <label className="mx-2 text-lg text-forest-100">Course:</label>
-                    <input type="text" className="bg-azur-100 border-2 text-white w-10/12 rounded-lg px-1
+                    <label className="mx-2 text-2xl text-forest-100">Course:</label>
+                    <input type="text" className="bg-azur-100 border-2 text-2xl text-white w-11/12 rounded-lg px-1
                     border-azur-100 focus:border-forest-100 focus:outline-0" placeholder="Title" value={title} onChange={handleChange('title')} />
                 </div>
                 <div className="">
@@ -66,7 +66,7 @@ const CreateCourse = ({ router }) => {
                         modules={CreateCourse.modules} formats={CreateCourse.formats} value={body} onChange={handleBody} />
                 </div>
                 <div className="text-center text-2xl mt-4">
-                    <button type="submit" className="border-2 rounded-lg border-forest-100 border-solid w-64 mb-4 text-center text-forest-100 hover:text-azur-100 hover:bg-forest-100">Publish</button>
+                    <button type="submit" className="border-2 text-3xl rounded-lg border-forest-100 border-solid w-64 mb-4 text-center text-forest-100 hover:text-azur-100 hover:bg-forest-100">Publish</button>
                 </div>
             </form>
         );
