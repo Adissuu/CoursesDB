@@ -163,6 +163,18 @@ const CreateCourse = ({ router }) => {
         );
     };
 
+    const showError = () => (
+        <div className="bg-red-100 border-t border-b border-100 text-red-800 px-4 py-3 rounded m-2" style={{ display: error ? '' : 'none' }}>
+            {error}
+        </div>
+    );
+
+    const showSuccess = () => (
+        <div className="bg-forest-300 border-t border-b border-100 text-forest-200 px-4 py-3 mx-16 rounded" style={{ display: success ? '' : 'none' }}>
+            {success}
+        </div>
+    );
+
     const createCourseForm = () => {
         return (
             <form onSubmit={publishCourse}>
@@ -185,19 +197,24 @@ const CreateCourse = ({ router }) => {
 
 
     return (
-        <div className="flex flex-none justify-between">
-            <div className="w-full">
-                {createCourseForm()}
-            </div>
-            <div className="flex flex-col mx-4 w-2/12">
-                <h1 className="text-forest-100 text-2xl">Fields</h1>
-                <hr />
-                <ul className="scrollbar-hide" style={{ maxHeight: '400px', overflowY: 'scroll' }}>{showCategories()}</ul>
-                <h1 className="text-forest-100 text-2xl">Prerequesites</h1>
-                <hr />
-                <ul className="scrollbar-hide" style={{ maxHeight: '400px', overflowY: 'scroll' }}>{showTags()}</ul>
-            </div>
+        <><div className="">
+
         </div>
+            <div className="flex flex-none justify-between">
+                <div className="w-full">
+                    {showError()}
+                    {showSuccess()}
+                    {createCourseForm()}
+                </div>
+                <div className="flex flex-col mx-4 w-2/12">
+                    <h1 className="text-forest-100 text-2xl">Fields</h1>
+                    <hr />
+                    <ul className="scrollbar-hide" style={{ maxHeight: '400px', overflowY: 'scroll' }}>{showCategories()}</ul>
+                    <h1 className="text-forest-100 text-2xl">Prerequesites</h1>
+                    <hr />
+                    <ul className="scrollbar-hide" style={{ maxHeight: '400px', overflowY: 'scroll' }}>{showTags()}</ul>
+                </div>
+            </div></>
     );
 };
 

@@ -51,4 +51,5 @@ body::-webkit-scrollbar-thumb {
 .ql-editor {
     background-color: #011120;
     font-family: 'Courier New', Courier, monospace;
+    min-height: 300px;
 }
