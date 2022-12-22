@@ -30,6 +30,10 @@ const courseSchema = new mongoose.Schema({
     mdesc: {
         type: String,
     },
+    photo: {
+        data: Buffer,
+        contentType: String
+    },
     categories: [{ type: ObjectId, ref: 'Category', required: true }],
     tags: [{ type: ObjectId, ref: 'Tag', required: true }],
     postedBy: {

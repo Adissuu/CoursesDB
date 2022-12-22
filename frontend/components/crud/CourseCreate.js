@@ -39,7 +39,7 @@ const CreateCourse = ({ router }) => {
         formData: '',
         title: '',
         hidePublishButton: false
-    })
+    });
 
     useEffect(() => {
         setValues({ ...values, formData: new FormData() });
@@ -68,14 +68,24 @@ const CreateCourse = ({ router }) => {
     };
 
     const { error, sizeError, success, formData, title, hidePublishButton } = values
+    const token = getCookie('token');
 
     const publishCourse = (e) => {
         e.preventDefault()
-        console.log('ready')
-    }
+        createCourse(formData, token).then(data => {
+            if (data.error) {
+                setValues({ ...values, error: data.error })
+            } else {
+                setValues({ ...values, title: '', error: '', success: `A new course titled "${data.title}" has been created.` });
+                setBody('');
+                setCategories([]);
+                setTags([]);
+            }
+        });
+    };
 
     const handleChange = name => e => {
-        console.log(e.target.value);
+        //console.log(e.target.value);
         const value = e.target.value;
         formData.set(name, value);
         setValues({ ...values, [name]: value, formData, error: '' });
@@ -109,7 +119,7 @@ const CreateCourse = ({ router }) => {
     const handleTagsToggle = t => () => {
         setValues({ ...values, error: '' });
         // return the first index or -1
-        const clickedTag = checked.indexOf(t);
+        const clickedTag = checkedTag.indexOf(t);
         const all = [...checkedTag];
 
         if (clickedTag === -1) {
@@ -143,7 +153,7 @@ const CreateCourse = ({ router }) => {
             tags.map((t, i) => (
                 <li key={i} className="list-none">
                     <label className="relative cursor-pointer">
-                        <input onChange={handleToggle(t._id)} type="checkbox" className="peer sr-only" />
+                        <input onChange={handleTagsToggle(t._id)} type="checkbox" className="peer sr-only" />
                         <h2 className="border-2 border-solid border-forest-100 text-forest-100 rounded-md w-auto p-1 my-2 text-xl inline-block peer-checked:bg-forest-100 peer-checked:text-azur-100">
                             {t.name}
                         </h2>

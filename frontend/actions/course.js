@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch';
 import { API } from '../config';
 
 export const createCourse = (course, token) => {
+    // console.log(course.get('title'));
     return fetch(`${API}/course`, {
         method: 'POST',
         headers: {
