@@ -27,9 +27,7 @@ const courseSchema = new mongoose.Schema({
     mtitle: {
         type: String,
     },
-    mdesc: {
-        type: String,
-    },
+    mdesc: { type: {} },
     photo: {
         data: Buffer,
         contentType: String
