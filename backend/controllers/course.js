@@ -85,3 +85,157 @@ exports.create = (req, res) => {
         });
     });
 };
+
+
+exports.list = (req, res) => {
+    Course.find({})
+        .populate('categories', '_id name slug')
+        .populate('tags', '_id name slug')
+        .populate('postedBy', '_id name username')
+        .select('_id title slug excerpt categories tags postedBy createdAt updatedAt')
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)
+                })
+            }
+            res.json(data);
+        })
+}
+exports.listAllCoursesCategoriesTags = (req, res) => {
+    let limit = req.body.limit ? parseInt(req.body.limit) : 10;
+    let skip = req.body.skip ? parseInt(req.body.skip) : 0;
+
+    let courses;
+    let categories;
+    let tags;
+
+    Course.find({})
+        .populate('categories', '_id name slug')
+        .populate('tags', '_id name slug')
+        .populate('postedBy', '_id name username profile')
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit)
+        .select('_id title slug excerpt categories tags postedBy createdAt updatedAt')
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)
+                });
+            }
+            courses = data; // courses
+            // get all categories
+            Category.find({}).exec((err, c) => {
+                if (err) {
+                    return res.json({
+                        error: errorHandler(err)
+                    });
+                }
+                categories = c; // categories
+                // get all tags
+                Tag.find({}).exec((err, t) => {
+                    if (err) {
+                        return res.json({
+                            error: errorHandler(err)
+                        });
+                    }
+                    tags = t;
+
+                    res.json({ courses, categories, tags, size: courses.length });
+                });
+            });
+        });
+};
+
+exports.read = (req, res) => {
+    const slug = req.params.slug.toLowerCase();
+    Course.findOne({ slug })
+        .populate('categories', '_id name slug')
+        .populate('tags', '_id name slug')
+        .populate('postedBy', '_id name username')
+        .select('_id title body slug mtitle mdesc categories tags postedBy createdAt updatedAt')
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)
+                });
+            }
+            res.json(data);
+        });
+};
+exports.remove = (req, res) => {
+    const slug = req.params.slug.toLowerCase();
+    Course.findOneAndRemove({ slug }).exec((err, data) => {
+        if (err) {
+            return res.json({
+                error: errorHandler(err)
+            });
+        }
+        res.json({
+            message: 'Course deleted successfully.'
+        });
+    });
+};
+
+exports.update = (req, res) => {
+    const slug = req.params.slug.toLowerCase();
+
+    Course.findOne({ slug }).exec((err, oldCourse) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            });
+        }
+
+        let form = new formidable.IncomingForm();
+        form.keepExtensions = true;
+
+        form.parse(req, (err, fields, files) => {
+            if (err) {
+                return res.status(400).json({
+                    error: 'Image could not upload'
+                });
+            }
+
+            let slugBeforeMerge = oldCourse.slug;
+            oldCourse = _.merge(oldCourse, fields);
+            oldCourse.slug = slugBeforeMerge;
+
+            const { body, desc, categories, tags } = fields;
+
+            if (body) {
+                oldCourse.excerpt = smartTrim(body, 320, ' ', ' ...');
+                oldCourse.desc = body.substring(3, 160);
+            }
+
+            if (categories) {
+                oldCourse.categories = categories.split(',');
+            }
+
+            if (tags) {
+                oldCourse.tags = tags.split(',');
+            }
+
+            if (files.photo) {
+                if (files.photo.size > 10000000) {
+                    return res.status(400).json({
+                        error: 'Image should be less then 1mb in size'
+                    });
+                }
+                oldCourse.photo.data = fs.readFileSync(files.photo.path);
+                oldCourse.photo.contentType = files.photo.type;
+            }
+
+            oldCourse.save((err, result) => {
+                if (err) {
+                    return res.status(400).json({
+                        error: errorHandler(err)
+                    });
+                }
+                // result.photo = undefined;
+                res.json(result);
+            });
+        });
+    });
+};

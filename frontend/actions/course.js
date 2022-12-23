@@ -16,3 +16,17 @@ export const createCourse = (course, token) => {
         })
         .catch(err => console.log(err));
 };
+
+export const listCoursesWithCatAndTags = (course, token) => {
+    // console.log(course.get('title'));
+    return fetch(`${API}/courses-categories-tags`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+        },
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};

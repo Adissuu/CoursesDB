@@ -63,6 +63,9 @@ export default function Home() {
                                 }`}
                         >
                             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+                                <Link href="/courses" className='text-2xl content-center text-white hover:text-forest-200 duration-300'>
+                                    Courses
+                                </Link>
                                 {!isAuth() && (
                                     <>
                                         <li className="text-white">
