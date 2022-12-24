@@ -62,7 +62,7 @@ export default function Home() {
                             className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? 'block' : 'hidden'
                                 }`}
                         >
-                            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+                            <ul className="items-center justify-center space-x-6 space-y-8 md:flex md:space-x-6 md:space-y-0">
                                 <Link href="/courses" className='text-2xl content-center text-white hover:text-forest-200 duration-300'>
                                     Courses
                                 </Link>
