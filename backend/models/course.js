@@ -38,7 +38,7 @@ const courseSchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'User'
     }
-}, { timestamp: true })
+}, { timestamps: true })
 
 
 module.exports = mongoose.model('Course', courseSchema);
