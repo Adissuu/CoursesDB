@@ -1,34 +1,39 @@
 import Layout from "../../components/Layout";
-import Link from "next/link";
 import { listCoursesWithCatAndTags } from "../../actions/course";
-import { API } from "../../config";
+import Link from "next/link";
+import Card from '../../components/course/Card'
+import { useState } from "react";
 
 
 
-const Courses = ({ courses, categories, tags, size }) => {
+const Courses = ({ courses, categories, tags }) => {
+
+
+    const showAllCategories = () => {
+        return categories.map((c, i) => (
+            <Link href={`/categories/${c.slug}`} className="text-forest-100 mx-2 mt-3 p-1 rounded-md border-2 border-solid border-forest-100 hover:bg-forest-100 hover:text-azur-100" key={i}>
+                {c.name}
+            </Link>
+        ));
+    };
     const showAllCourses = () => {
         return courses.map((course, i) => {
             return (
                 <>
                     <article key={i} className="mx-6 my-2 text-azur-100 bg-forest-100 p-4 rounded-xl hover:bg-green-400">
-                        <h1 className="text-xl">Field(s): </h1>
-                        <div className="">
-                            <header>
-                                <Link href={`/courses/${course.slug}`} className="underline text-xl hover:text-green-700">{course.title}</Link>
-                            </header>
-                            <section>Prerequisites: </section>
-                            <h2>{course.excerpt}</h2>
-                            <h2 className="text-lg text-end mr-6">By {course.postedBy.name}</h2>
-                        </div>
+                        <Card course={course}></Card>
                     </article>
                     <hr className="mx-40 border-forest-100 border rounded-md" />
                 </>)
         })
     }
-
     return (
         <Layout>
             <div className="bg-azur-200 h-screen  justify-center">
+                <h1 className="text-xl text-center text-forest-100 my-6">Fields available</h1>
+                <div className="text-center">
+                    {showAllCategories()}
+                </div>
                 <h1 className="text-3xl text-center text-forest-100 underline my-6">List of all courses</h1>
                 {showAllCourses()}
             </div>
@@ -37,6 +42,7 @@ const Courses = ({ courses, categories, tags, size }) => {
 }
 
 Courses.getInitialProps = () => {
+
     return listCoursesWithCatAndTags().then(data => {
         if (data.error) {
             console.log(data.error);
@@ -46,7 +52,8 @@ Courses.getInitialProps = () => {
                 courses: data.courses,
                 categories: data.categories,
                 tags: data.tags,
-                size: data.size
+                size: data.size,
+
             };
         }
     });

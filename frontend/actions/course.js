@@ -17,8 +17,7 @@ export const createCourse = (course, token) => {
         .catch(err => console.log(err));
 };
 
-export const listCoursesWithCatAndTags = (course, token) => {
-    // console.log(course.get('title'));
+export const listCoursesWithCatAndTags = () => {
     return fetch(`${API}/courses-categories-tags`, {
         method: 'POST',
         headers: {
