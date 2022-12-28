@@ -14,7 +14,7 @@ const Card = ({ course }) => {
 
     const showCourseTags = course =>
         course.tags.map((t, i) => (
-            <Link key={i} className="px-1 rounded-md border-2 border-solid border-forest-100 duration-100 hover:bg-forest-100" href={`/tags/${t.slug}`}>
+            <Link key={i} href={`/tags/${t.slug}`}>
                 {t.name}
             </Link>
         ))

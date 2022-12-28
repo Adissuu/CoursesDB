@@ -30,6 +30,24 @@ body::-webkit-scrollbar-thumb {
     display: none;
 }
 
+/* basic html style */
+
+.body h1 {
+    color: #f9fff6;
+    font-size: 3rem;
+}
+
+.body li {
+    color: #1BD175;
+}
+
+.body h6 {
+    text-align: center;
+    width: 0.25rem;
+    border-top: 2rem solid red;
+    border-radius: 2rem;
+}
+
 /* PROGRESS BAR */
 #nprogress .bar {
     background-color: #1BD175 !important;

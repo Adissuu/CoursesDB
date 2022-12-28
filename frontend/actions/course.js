@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-fetch';
 import { API } from '../config';
 
+
+
 export const createCourse = (course, token) => {
     // console.log(course.get('title'));
     return fetch(`${API}/course`, {
@@ -29,3 +31,14 @@ export const listCoursesWithCatAndTags = () => {
         })
         .catch(err => console.log(err));
 };
+
+export const singleCourse = (slug) => {
+    return fetch(`${API}/course/${slug}`, {
+        method: 'GET',
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+
+}

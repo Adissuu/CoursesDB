@@ -3,10 +3,9 @@ import { listCoursesWithCatAndTags } from "../../actions/course";
 import Link from "next/link";
 import Card from '../../components/course/Card'
 import { useState } from "react";
+import { withRouter } from "next/router"
 
-
-
-const Courses = ({ courses, categories, tags }) => {
+const Courses = ({ courses, categories, router }) => {
 
 
     const showAllCategories = () => {
@@ -19,12 +18,13 @@ const Courses = ({ courses, categories, tags }) => {
     const showAllCourses = () => {
         return courses.map((course, i) => {
             return (
-                <>
-                    <article key={i} className="mx-6 my-2 text-azur-100 bg-forest-100 p-4 rounded-xl hover:bg-green-400">
+                <article key={i} >
+                    <div className="mx-6 my-2 text-azur-100 bg-forest-100 p-4 rounded-xl hover:bg-green-400">
                         <Card course={course}></Card>
-                    </article>
+                    </div>
                     <hr className="mx-40 border-forest-100 border rounded-md" />
-                </>)
+                </article>
+            )
         })
     }
     return (
@@ -42,7 +42,6 @@ const Courses = ({ courses, categories, tags }) => {
 }
 
 Courses.getInitialProps = () => {
-
     return listCoursesWithCatAndTags().then(data => {
         if (data.error) {
             console.log(data.error);
@@ -59,4 +58,4 @@ Courses.getInitialProps = () => {
     });
 }
 
-export default Courses;
+export default withRouter(Courses);
