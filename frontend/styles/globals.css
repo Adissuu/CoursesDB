@@ -32,10 +32,11 @@ body::-webkit-scrollbar-thumb {
 
 /* basic html style */
 
-.body h1 {
+.body h1,
+.body h2 {
     color: #1BD175;
     font-size: 2.5rem;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     padding-left: 0.5rem;
     background-color: #053260;
 
@@ -46,7 +47,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .body p {
-    color: #1BD175;
+    color: #f9fff6;
     background-color: #1e4c7a;
     font-size: 1.125rem;
     padding-left: .5rem;

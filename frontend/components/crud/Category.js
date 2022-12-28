@@ -104,12 +104,12 @@ const Category = () => {
 
     const newCategoryForm = () => (
         <>
-            <h1 className='text-center text-white text-2xl mb-4'>Categories</h1>
+            <h1 className='text-center text-white text-2xl mb-4'>Fields</h1>
             <form onSubmit={clickSubmit} className='text-forest-100'>
                 <div className='flex justify-center'>
                     <label className="bg-azur-100 mr-1 border-2 border-azur-100 text-xl">Name:</label>
                     <input type="text" className="bg-azur-100 border-2 text-xl rounded-lg px-1
-                    border-azur-100 focus:border-forest-100 focus:outline-0" placeholder='Category' onChange={handleChange} value={name} required />
+                    border-azur-100 focus:border-forest-100 focus:outline-0" placeholder='Field' onChange={handleChange} value={name} required />
                 </div>
                 <div>
                     <div className="flex justify-center">

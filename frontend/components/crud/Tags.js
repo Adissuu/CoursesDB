@@ -104,12 +104,12 @@ const Tag = () => {
 
     const newTagForm = () => (
         <>
-            <h1 className='text-center text-white text-2xl mb-4'>Tags</h1>
+            <h1 className='text-center text-white text-2xl mb-4'>Prerequisites</h1>
             <form onSubmit={clickSubmit} className='text-forest-100'>
                 <div className='flex justify-center'>
                     <label className="bg-azur-100 mr-1 border-2 border-azur-100 text-xl">Name:</label>
                     <input type="text" className="bg-azur-100 border-2 text-xl rounded-lg px-1
-                    border-azur-100 focus:border-forest-100 focus:outline-0" placeholder='Tag' onChange={handleChange} value={name} required />
+                    border-azur-100 focus:border-forest-100 focus:outline-0" placeholder='Prerequisite' onChange={handleChange} value={name} required />
                 </div>
                 <div>
                     <div className="flex justify-center">
