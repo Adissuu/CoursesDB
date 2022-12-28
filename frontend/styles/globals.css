@@ -33,18 +33,32 @@ body::-webkit-scrollbar-thumb {
 /* basic html style */
 
 .body h1 {
-    color: #f9fff6;
-    font-size: 3rem;
+    color: #1BD175;
+    font-size: 2.5rem;
+    text-decoration: underline;
+    padding-left: 0.5rem;
+    background-color: #053260;
+
 }
 
 .body li {
     color: #1BD175;
 }
 
+.body p {
+    color: #1BD175;
+    background-color: #1e4c7a;
+    font-size: 1.125rem;
+    padding-left: .5rem;
+}
+
 .body h6 {
-    text-align: center;
-    width: 0.25rem;
-    border-top: 2rem solid red;
+    position: relative;
+    left: 50%;
+    width: 0.35rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    border-top: 2rem solid #1BD175;
     border-radius: 2rem;
 }
 

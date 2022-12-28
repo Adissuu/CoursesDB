@@ -213,6 +213,21 @@ const CreateCourse = ({ router }) => {
                     <h1 className="text-forest-100 text-2xl">Prerequesites</h1>
                     <hr />
                     <ul className="scrollbar-hide" style={{ maxHeight: '400px', overflowY: 'scroll' }}>{showTags()}</ul>
+                    <h1 className="text-forest-100 text-2xl">Formatting Information</h1>
+                    <hr />
+                    <div className="rounded-b-md bg-azur-100 text-white pl-1">
+                        <ul>
+                            <li>- Use H<sub>6</sub> for end of chapters.
+                                DO NOT create space under
+                            </li>
+                            <li>
+                                - Use p for main text
+                            </li>
+                            <li>
+                                - Use H<sub>1</sub> for chapter name
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div></>
     );

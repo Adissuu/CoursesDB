@@ -8,7 +8,7 @@ const SingleCourse = ({ course }) => {
 
     const showCourseCategories = course =>
         course.categories.map((c, i) => (
-            <Link key={i} href={`/categories/${c.slug}`}>
+            <Link className="text-forest-300 p-1 rounded-md border-forest-300 border hover:text-forest-100 hover:border-forest-100" key={i} href={`/categories/${c.slug}`}>
                 {c.name}
             </Link>
         ));
@@ -16,8 +16,8 @@ const SingleCourse = ({ course }) => {
 
     const showCourseTags = course =>
         course.tags.map((t, i) => (
-            <Link key={i} href={`/tags/${t.slug}`}>
-                {t.name}
+            <Link className="text-forest-300 hover:text-forest-100" key={i} href={`/tags/${t.slug}`}>
+                {` ${t.name}`}
             </Link>
         ))
 
@@ -27,15 +27,20 @@ const SingleCourse = ({ course }) => {
             <Layout>
                 <main>
                     <article>
-                        <div className="flex">
+                        <div className="mx-10">
                             <section>
-                                <h1>Written by {course.postedBy.name} | Published {moment(course.updatedAt).fromNow()}</h1>
-                                <h1>{course.title}</h1>
-                                {showCourseCategories(course)}
-                                {showCourseTags(course)}
-                                <div className="body">
+                                <div className="text-forest-100 text-xl mt-4 px-6 py-4 rounded-md bg-azur-100 mb-2" >
+                                    {showCourseCategories(course)}
+                                    <h1 className="text-5xl">{course.title}</h1>
+                                    <h1 className="">Written by {course.postedBy.name} - {moment(course.updatedAt).fromNow()}</h1>
+                                    <hr className="w-96 border-forest-100" />
+                                    <div className="">
+                                        Prerequisite:
+                                        {showCourseTags(course)}
+                                    </div>
+                                </div>
+                                <div className="body drop-shadow-xl">
                                     {parse(course.body)}
-
                                 </div>
                             </section>
                         </div>
