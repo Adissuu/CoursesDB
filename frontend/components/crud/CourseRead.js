@@ -42,21 +42,11 @@ const CourseRead = () => {
         }
     };
 
-    const showUpdateButton = course => {
-        if (isAuth() && isAuth().role === 1) {
-            return (
-                <Link className="p-1 bg-violet-200 rounded-md hover:bg-violet-300" href={`/admin/crud/${course.slug}`}>
-                    Modify
-                </Link>
-            );
-        }
-    };
-
     const showAllCourses = () => {
         return courses.map((course, i) => {
             return (
                 <div key={i} className="mx-6 my-2 text-azur-100 bg-violet-500 px-4 py-2 rounded-xl hover:bg-violet-400">
-                    <div className="flex">
+                    <div className="flex text-white">
                         <h3>{`${course.title} |`} </h3>
                         <p className="ml-2">
                             Written by {course.postedBy.name} {moment(course.updatedAt).fromNow()}
@@ -66,7 +56,9 @@ const CourseRead = () => {
                     <button className="mr-2 rounded-md text-red-900 bg-red-200 px-1 hover:bg-red-300" onClick={() => deleteConfirm(course.slug)}>
                         Delete
                     </button>
-                    {showUpdateButton(course)}
+                    <Link className="p-1 bg-violet-200 rounded-md hover:bg-violet-300" href={`/admin/crud/${course.slug}`}>
+                        Modify
+                    </Link>
                 </div>
             );
         });

@@ -205,7 +205,7 @@ exports.update = (req, res) => {
             const { body, desc, categories, tags } = fields;
 
             if (body) {
-                oldCourse.excerpt = smartTrim(body, 320, ' ', ' ...');
+                oldCourse.excerpt = smartTrim(course.body, 180, ' ', ' ...');
                 oldCourse.desc = body.substring(3, 160);
             }
 
