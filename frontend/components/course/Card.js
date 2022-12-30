@@ -28,7 +28,10 @@ const Card = ({ course }) => {
                 </header>
                 <section>Prerequisites: {showCourseTags(course)}</section>
                 <h2>{course.excerpt}</h2>
-                <h2 className="text-lg text-end mr-6">By {course.postedBy.name}</h2>
+                <div className="flex w-full justify-between">
+                    <Link href={`/courses/${course.slug}`} className="border-2 border-azur-200 rounded-md px-1 hover:text-white hover:bg-azur-200">ReadMe</Link>
+                    <h2 className="text-lg text-end">By {course.postedBy.name}</h2>
+                </div>
             </div>
         </>
     );

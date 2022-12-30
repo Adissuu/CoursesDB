@@ -45,15 +45,15 @@ const SignupComponent = () => {
         setValues({ ...values, error: false, [name]: event.target.value });
     };
 
-    const showLoading = () => (loading ? (<div class="bg-forest-300 border-t border-b border-100 text-forest-200 px-4 py-3 rounded" role="alert">
+    const showLoading = () => (loading ? (<div class="absolute top-1/4 bg-forest-300 border-t border-b border-100 text-forest-200 px-4 py-3 rounded" role="alert">
         <p class="font-bold">Loading...</p>
         <p class="text-sm">Please wait</p>
     </div>) : '');
-    const showError = () => (error ? (<div class="bg-red-100 border-t border-b border-100 text-red-800 px-4 py-3 rounded m-2" role="alert">
+    const showError = () => (error ? (<div class="absolute top-1/4 bg-red-100 border-t border-b border-100 text-red-800 px-4 py-3 rounded m-2" role="alert">
         <p class="font-bold">Error!</p>
         <p class="text-sm">{error}</p>
     </div>) : '');
-    const showMessage = () => (message ? (<div class="bg-forest-300 border-t border-b border-100 text-forest-200 px-4 py-3 rounded" role="alert">
+    const showMessage = () => (message ? (<div class="absolute top-1/4 bg-forest-300 border-t border-b border-100 text-forest-200 px-4 py-3 rounded" role="alert">
         <p class="font-bold">Success!</p>
         <p class="text-sm">{message}</p>
     </div>) : '');
