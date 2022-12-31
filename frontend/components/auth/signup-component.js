@@ -47,13 +47,13 @@ const SignupComponent = () => {
     };
 
     const showLoading = () => (loading ? <div className="absolute top-1/4 alert alert-info">Loading...</div> : '');
-    const showError = () => (error ? (<div class="absolute top-1/4 bg-green-100 border-t border-b border-100 text-red-800 px-4 py-3 rounded m-2" role="alert">
-        <p class="font-bold">Error!</p>
-        <p class="text-sm">{error}</p>
+    const showError = () => (error ? (<div className="absolute top-1/4 bg-green-100 border-t border-b border-100 text-red-800 px-4 py-3 rounded m-2" role="alert">
+        <p className="font-bold">Error!</p>
+        <p className="text-sm">{error}</p>
     </div>) : '');
-    const showMessage = () => (message ? (<div class="absolute top-1/4 bg-forest-300 border-t border-b border-100 text-forest-200 px-4 py-3 rounded" role="alert">
-        <p class="font-bold">Success!</p>
-        <p class="text-sm">{message}</p>
+    const showMessage = () => (message ? (<div className="absolute top-1/4 bg-forest-300 border-t border-b border-100 text-forest-200 px-4 py-3 rounded" role="alert">
+        <p className="font-bold">Success!</p>
+        <p className="text-sm">{message}</p>
     </div>) : '');
 
 

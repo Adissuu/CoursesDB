@@ -14,35 +14,22 @@ import '../../node_modules/react-quill/dist/quill.snow.css'
 
 const CourseUpdate = ({ router }) => {
 
-    const courseFromLS = () => {
-        if (typeof window === 'undefined') {
-            return false;
-        }
-
-        if (localStorage.getItem('course')) {
-            return JSON.parse(localStorage.getItem('course'));
-        } else {
-            return false;
-        }
-    }
-
     const [categories, setCategories] = useState([]);
     const [tags, setTags] = useState([]);
 
     const [checked, setChecked] = useState([]); // categories
     const [checkedTag, setCheckedTag] = useState([]); // tags
 
-    const [body, setBody] = useState(courseFromLS());
+    const [body, setBody] = useState('');
     const [values, setValues] = useState({
         error: '',
         sizeError: '',
         success: '',
-        formData: new FormData(),
         title: '',
         body: ''
     });
 
-    const { error, success, formData, title } = values;
+    const { error, success, title } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -105,12 +92,18 @@ const CourseUpdate = ({ router }) => {
 
     const editCourse = (e) => {
         e.preventDefault()
+        let formData = new FormData();
+        formData.append("title", values.title);
+        formData.append("body", body);
+        console.log(formData.get('body'))
 
         updateCourse(formData, token, router.query.slug).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error })
+                console.log('abt')
             } else {
                 setValues({ ...values, title: '', error: '', success: `The course titled "${data.title}" has been updated.` });
+                console.log('je me rends ici')
                 Router.replace(`/admin`);
             }
         });
@@ -119,14 +112,12 @@ const CourseUpdate = ({ router }) => {
     const handleChange = name => e => {
         //console.log(e.target.value);
         const value = e.target.value;
-        formData.set(name, value);
-        setValues({ ...values, [name]: value, formData, error: '' });
+        setValues({ ...values, [name]: value, error: '' });
     };
 
     const handleBody = e => {
         // console.log(e);
         setBody(e);
-        formData.set('body', e);
         if (typeof window !== 'undefined') {
             localStorage.setItem('course', JSON.stringify(e));
         }
@@ -134,7 +125,6 @@ const CourseUpdate = ({ router }) => {
 
     const handleToggle = c => () => {
         setValues({ ...values, error: '' });
-        // return the first index or -1
         const clickedCategory = checked.indexOf(c);
         const all = [...checked];
 
@@ -143,9 +133,7 @@ const CourseUpdate = ({ router }) => {
         } else {
             all.splice(clickedCategory, 1);
         }
-        console.log(all);
         setChecked(all);
-        formData.set('categories', all);
     };
 
     const handleTagsToggle = t => () => {
@@ -159,9 +147,7 @@ const CourseUpdate = ({ router }) => {
         } else {
             all.splice(clickedTag, 1);
         }
-        console.log(all);
         setCheckedTag(all);
-        formData.set('tags', all);
     };
 
     const findOutCategory = c => {

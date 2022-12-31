@@ -45,7 +45,7 @@ exports.create = (req, res) => {
         course.title = title;
         course.body = body;
         // console.log(req.auth)
-        course.excerpt = smartTrim(course.body, 180, ' ', ' ...');
+        course.excerpt = smartTrim(course.body, 320, ' ', ' ...');
         course.slug = slugify(title).toLowerCase();
         course.mtitle = `${title} | ${process.env.APP_NAME}`;
         course.mdesc = course.body.substring(3, 160);
@@ -205,7 +205,7 @@ exports.update = (req, res) => {
             const { body, desc, categories, tags } = fields;
 
             if (body) {
-                oldCourse.excerpt = smartTrim(course.body, 180, ' ', ' ...');
+                oldCourse.excerpt = smartTrim(body, 320, ' ', ' ...');
                 oldCourse.desc = body.substring(3, 160);
             }
 
@@ -217,15 +217,6 @@ exports.update = (req, res) => {
                 oldCourse.tags = tags.split(',');
             }
 
-            if (files.photo) {
-                if (files.photo.size > 10000000) {
-                    return res.status(400).json({
-                        error: 'Image should be less then 1mb in size'
-                    });
-                }
-                oldCourse.photo.data = fs.readFileSync(files.photo.path);
-                oldCourse.photo.contentType = files.photo.type;
-            }
 
             oldCourse.save((err, result) => {
                 if (err) {

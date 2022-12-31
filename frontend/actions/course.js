@@ -72,7 +72,6 @@ export const removeCourse = (slug, token) => {
 
 
 export const updateCourse = (course, token, slug) => {
-    // console.log(course.get('title'));
     return fetch(`${API}/course/${slug}`, {
         method: 'PUT',
         headers: {
