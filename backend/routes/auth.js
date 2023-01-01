@@ -8,8 +8,8 @@ const { userSignupValidator, userSignInValidator } = require('../validators/auth
 
 
 router.post('/signup', userSignupValidator, runValidation, signup);
-router.post('/signIn', userSignInValidator, runValidation, signIn);
-router.get('/signOut', signOut);
+router.post('/signin', userSignInValidator, runValidation, signIn);
+router.get('/signout', signOut);
 
 
 
