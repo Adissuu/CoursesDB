@@ -230,3 +230,20 @@ exports.update = (req, res) => {
         });
     });
 };
+
+exports.listSearch = (req, res) => {
+    const { search } = req.query
+    if (search) {
+        Course.find({
+            $or: [{ title: { $regex: search, $options: 'i' } }, { body: { $regex: search, $options: 'i' } }]
+        }, (err, courses) => {
+            if (err) {
+                return res.status(400).json({
+                    error: errorHandler(err)
+                })
+            }
+            res.json(courses);
+        }).select('-body');
+    }
+
+};

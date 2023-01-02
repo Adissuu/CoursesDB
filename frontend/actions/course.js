@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import { API } from '../config';
-
+import queryString from 'query-string'
 
 
 export const createCourse = (course, token) => {
@@ -85,3 +85,15 @@ export const updateCourse = (course, token, slug) => {
         })
         .catch(err => console.log(err));
 };
+
+export const listSearch = (params) => {
+    let query = queryString.stringify(params);
+    return fetch(`${API}/courses/search?${query}`, {
+        method: 'GET',
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+
+}
