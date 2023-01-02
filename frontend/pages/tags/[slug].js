@@ -1,11 +1,11 @@
 import Link from "next/link"
 import Layout from "../../components/Layout"
-import { singleCategory } from "../../actions/category"
+import { singleTag } from "../../actions/tag"
 import Card from "../../components/course/Card"
 import moment from "moment/moment"
-import parse from 'html-react-parser'
 
-const Category = ({ category, courses, query }) => {
+
+const Tag = ({ tag, courses, query }) => {
 
 
     return (
@@ -15,11 +15,11 @@ const Category = ({ category, courses, query }) => {
                     <article>
                         <div className="mx-10">
                             <section>
-                                <h1 className="text-5xl mt-6 underline text-pink-500 text-center">Field: {category.name}</h1>
-                                {courses.map((c, i) => (
+                                <h1 className="text-5xl mt-6 underline text-indigo-500 text-center">Prerequisite: {tag.name}</h1>
+                                {courses.map((t, i) => (
                                     <>
-                                        <div className="mx-6 my-2 text-azur-100 bg-pink-500 p-4 rounded-xl hover:bg-pink-400" >
-                                            <Card key={i} course={c}>
+                                        <div className="mx-6 my-2 text-azur-100 bg-indigo-500 p-4 rounded-xl hover:bg-indigo-400" >
+                                            <Card key={i} course={t}>
                                             </Card>
                                         </div>
                                     </>
@@ -33,14 +33,14 @@ const Category = ({ category, courses, query }) => {
     )
 }
 
-Category.getInitialProps = ({ query }) => {
-    return singleCategory(query.slug).then(data => {
+Tag.getInitialProps = ({ query }) => {
+    return singleTag(query.slug).then(data => {
         if (data.error) {
             console.log(data.error);
         } else {
-            return { category: data.category, courses: data.courses, query };
+            return { tag: data.tag, courses: data.courses, query };
         }
     });
 };
 
-export default Category;
+export default Tag;

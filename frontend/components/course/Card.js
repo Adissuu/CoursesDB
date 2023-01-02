@@ -6,7 +6,7 @@ const Card = ({ course }) => {
 
     const showCourseCategories = course =>
         course.categories.map((c, i) => (
-            <Link key={i} className="p-1 rounded-md border-2 border-solid border-forest-100 duration-100 hover:bg-forest-100" href={`/categories/${c.slug}`}>
+            <Link key={i} className="p-1 rounded-md border-2 border-solid border-azur-200 duration-100 hover:bg-azur-200 hover:text-white" href={`/categories/${c.slug}`}>
                 {c.name}
             </Link>
         ));
