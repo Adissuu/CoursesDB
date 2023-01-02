@@ -88,7 +88,7 @@ export default function Home() {
                                     </>)}
                                 {isAuth() && isAuth().role == 0 && (
                                     <Link href="/user" className='text-2xl content-center text-white hover:text-forest-200 duration-300'>
-                                        {`${isAuth().name}'s Dashboard`}
+                                        Profile
                                     </Link>
                                 )}
                                 {isAuth() && isAuth().role == 1 && (

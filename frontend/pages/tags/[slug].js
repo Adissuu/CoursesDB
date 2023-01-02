@@ -18,7 +18,7 @@ const Tag = ({ tag, courses, query }) => {
                                 <h1 className="text-5xl mt-6 underline text-indigo-500 text-center">Prerequisite: {tag.name}</h1>
                                 {courses.map((t, i) => (
                                     <>
-                                        <div className="mx-6 my-2 text-azur-100 bg-indigo-500 p-4 rounded-xl hover:bg-indigo-400" >
+                                        <div className="mx-6 my-2 text-azur-100 bg-indigo-500 p-4 rounded-xl hover:bg-indigo-400">
                                             <Card key={i} course={t}>
                                             </Card>
                                         </div>

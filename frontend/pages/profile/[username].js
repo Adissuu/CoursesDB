@@ -9,13 +9,28 @@ const UserProfile = ({ user, courses }) => {
             <Layout>
                 <div>
                     <h1 className="text-center text-forest-100 text-6xl ">{user.name}</h1>
-                    {(courses.length != 0) ? < div className="flex flex-col">
-                        {courses.map((c, i) => (
-                            <Link key={i} href={`/courses/${c.slug}`}>
-                                {c.title}
-                            </Link>
-                        ))}
-                    </div> : '<p>ah.</p>'}
+                    <div className="flex justify-between">
+                        <section className="ml-4 mr-2 flex-1">
+                            <h1 className="pl-2 text-forest-100 text-2xl">Courses created</h1>
+                            {(courses.length != 0) ?
+                                <div className="flex flex-col rounded-md bg-azur-100 ">
+                                    {
+                                        courses.map((c, i) => (
+                                            <Link className="pl-2 text-forest-100 hover:bg-azur-400 rounded" key={i} href={`/courses/${c.slug}`}>
+                                                {c.title} - {moment(c.createdAt).fromNow()}
+                                            </Link>
+                                        ))
+                                    }
+                                </div>
+                                : <div className="rounded-md bg-azur-100">
+                                    <p className="pl-2 text-forest-100 text-center">No course created.</p>
+                                </div>}
+                        </section>
+                        <section className="mr-4 ml-2 flex-1">
+                            <h1 className="pl-2 text-forest-100 text-2xl">Message {user.name}</h1>
+                            <div className="flex flex-col rounded-md bg-azur-100 text-forest-100">Contact form</div>
+                        </section>
+                    </div>
                 </div>
             </Layout>
         </>

@@ -30,7 +30,7 @@ const Card = ({ course }) => {
                 <h2>{course.excerpt}</h2>
                 <div className="flex w-full justify-between">
                     <Link href={`/courses/${course.slug}`} className="border-2 border-azur-200 rounded-md px-1 hover:text-white hover:bg-azur-200">ReadMe</Link>
-                    <h2 className="text-lg text-end">By {course.postedBy.name}</h2>
+                    <Link className="text-lg text-end" href={`/profile/${course.postedBy.username}`}>By {course.postedBy.name}</Link>
                 </div>
             </div>
         </>
