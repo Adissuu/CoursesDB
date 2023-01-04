@@ -3,6 +3,7 @@ import Layout from "../../components/Layout"
 import { singleCourse } from "../../actions/course"
 import moment from "moment/moment"
 import parse from 'html-react-parser'
+import DisqusComments from "../../components/DisqusComments"
 
 const SingleCourse = ({ course }) => {
 
@@ -21,6 +22,14 @@ const SingleCourse = ({ course }) => {
             </Link>
         ))
 
+
+    const showComments = () => {
+        return (
+            <div className="bg-azur-400 mt-4 rounded-md p-4">
+                <DisqusComments post={course} />
+            </div>
+        )
+    }
 
     return (
         <>
@@ -43,6 +52,7 @@ const SingleCourse = ({ course }) => {
                                     {parse(course.body)}
                                 </div>
                             </section>
+                            {showComments()}
                         </div>
                     </article>
                 </main>

@@ -1,6 +1,20 @@
 import _fetch from "isomorphic-fetch";
 import { API } from '../config';
 import cookie from 'js-cookie';
+import Router from "next/router";
+
+export const handleResponse = response => {
+    if (response.status === 401) {
+        signout(() => {
+            Router.push({
+                pathname: '/signin',
+                query: {
+                    message: 'Your session is expired. Please sign in.'
+                }
+            });
+        });
+    }
+};
 
 export const signup = (user) => {
     return fetch(`${API}/signup`, {
@@ -111,3 +125,35 @@ export const updateUser = (user, next) => {
         }
     }
 };
+
+
+export const forgotPassword = (email) => {
+    return fetch(`${API}/forgot-password`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(email)
+    })
+        .then(response => {
+            console.log(email)
+            return response.json()
+        })
+        .catch(err => console.log(err))
+}
+
+export const resetPassword = (resetInfo) => {
+    return fetch(`${API}/reset-password`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(resetInfo)
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => console.log(err))
+}

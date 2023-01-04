@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import { API } from '../config';
 import queryString from 'query-string'
+import { handleResponse } from './auth';
 
 
 export const createCourse = (course, token) => {
@@ -14,6 +15,7 @@ export const createCourse = (course, token) => {
         body: course
     })
         .then(response => {
+            handleResponse(response);
             return response.json();
         })
         .catch(err => console.log(err));
@@ -65,6 +67,7 @@ export const removeCourse = (slug, token) => {
         },
     })
         .then(response => {
+            handleResponse(response);
             return response.json();
         })
         .catch(err => console.log(err));
@@ -81,6 +84,7 @@ export const updateCourse = (course, token, slug) => {
         body: course
     })
         .then(response => {
+            handleResponse(response);
             return response.json();
         })
         .catch(err => console.log(err));

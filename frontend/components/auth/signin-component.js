@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { signin, authenticate, isAuth } from '../../actions/auth';
 import Router from 'next/router';
+import Link from 'next/link';
 
 const SignupComponent = () => {
     const [values, setValues] = useState({
@@ -83,6 +84,8 @@ const SignupComponent = () => {
                         <button className="btn bg-forest-100 p-2 content-center text-3xl rounded-md text-white hover:bg-forest-200 duration-300">Sign In</button>
                     </div>
                 </form>
+                <br />
+                <Link className='text-forest-100 hover:text-forest-200' href="/auth/password/forgot">Forgot Password?</Link>
             </div>
 
         );
@@ -94,6 +97,7 @@ const SignupComponent = () => {
             {showLoading()}
             {showMessage()}
             {showForm && signinForm()}
+
         </>
     )
 };

@@ -9,6 +9,7 @@ const UserProfile = ({ user, courses }) => {
             <Layout>
                 <div>
                     <h1 className="text-center text-forest-100 text-6xl ">{user.name}</h1>
+                    <p className="pl-2 text-center text-forest-100 text-xl">{user.email}</p>
                     <div className="flex justify-between">
                         <section className="ml-4 mr-2 flex-1">
                             <h1 className="pl-2 text-forest-100 text-2xl">Courses created</h1>
@@ -27,8 +28,11 @@ const UserProfile = ({ user, courses }) => {
                                 </div>}
                         </section>
                         <section className="mr-4 ml-2 flex-1">
-                            <h1 className="pl-2 text-forest-100 text-2xl">Message {user.name}</h1>
-                            <div className="flex flex-col rounded-md bg-azur-100 text-forest-100">Contact form</div>
+                            <h1 className="pl-2 text-forest-100 text-2xl">About {user.name}</h1>
+                            <div className="flex flex-col rounded-md bg-azur-100 text-forest-100">
+
+                                <p className="pl-2"> {user.about}</p>
+                            </div>
                         </section>
                     </div>
                 </div>
