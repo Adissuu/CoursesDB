@@ -59,7 +59,7 @@ exports.update = (req, res) => {
 
         if (fields.password && fields.password.length < 6) {
             return res.status(400).json({
-                error: 'Password should be min 6 characters long'
+                error: 'Password should be minimum 6 characters long'
             });
         }
 
@@ -69,14 +69,17 @@ exports.update = (req, res) => {
                     error: 'Image should be less than 1mb'
                 });
             }
-            user.photo.data = fs.readFileSync(files.photo.path);
+            // console.log(files.photo)
+            // console.log("============")
+            // console.log(files.photo.filepath)
+            user.photo.data = fs.readFileSync(files.photo.filepath);
             user.photo.contentType = files.photo.type;
         }
 
         user.save((err, result) => {
             if (err) {
                 return res.status(400).json({
-                    error: 'All filds required'
+                    error: 'All the fields are required'
                 });
             }
             user.hashed_password = undefined;
