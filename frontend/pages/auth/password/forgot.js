@@ -19,7 +19,7 @@ const ForgotPassword = () => {
     const handleSubmit = e => {
         e.preventDefault();
         setValues({ ...values, message: '', error: '' });
-        forgotPassword(email).then(data => {
+        forgotPassword({ email }).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
