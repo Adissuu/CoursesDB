@@ -11,7 +11,7 @@ Dynamic landing page where the fields available are displayed. These fields can 
 # **Sign in / Sign out page**
 The sign in and sign out pages verify that the user is present in the database and act accordingly to the response given. When a user signs up, a random id is created, and the password is encrypted using JWT. SendGrid is also used with the "Forgot password ?" function as it sends email with a token giving the permission to change password.
 
-![image](frontend\public\images\readme\CoursesDB-signin.png "signin page")
+![image](frontend\public\images\readme\CoursesDB-signin.png?raw=true "signin page")
 
 # **Admin page**
 Simple Admin dashboard where the admins can create new fields and prerequisites, create courses, manage courses and update its profile. Simple users can also update their profile. 
