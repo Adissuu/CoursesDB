@@ -6,7 +6,7 @@ export const API = publicRuntimeConfig.PRODUCTION ? 'https://coursesdb.com' : 'h
 export const APP_NAME = publicRuntimeConfig.APP_NAME;
 
 export const DISQUS_SHORTNAME = publicRuntimeConfig.DISQUS_SHORTNAME;
-export const GOOGLE_CLIENT_ID = publicRuntimeConfig.GOOGLE_CLIENT_ID;
+
 
 export const DOMAIN = publicRuntimeConfig.PRODUCTION
     ? publicRuntimeConfig.DOMAIN_PRODUCTION
