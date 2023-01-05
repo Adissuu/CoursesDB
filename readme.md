@@ -6,7 +6,7 @@ This project helped me create my first ever fullstack viable application. I lear
 
 Dynamic landing page where the fields available are displayed. These fields can be created in the Admin page in Category / Tags.
 
-![Alt text](frontend\public\images\readme\CoursesDB-index.png "index page")
+<img src="frontend\public\images\readme\CoursesDB-index.png" alt="index page">
 
 # **Sign in / Sign out page**
 The sign in and sign out pages verify that the user is present in the database and act accordingly to the response given. When a user signs up, a random id is created, and the password is encrypted using JWT. SendGrid is also used with the "Forgot password ?" function as it sends email with a token giving the permission to change password.
