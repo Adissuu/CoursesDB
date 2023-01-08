@@ -1,6 +1,6 @@
 # :books: CoursesDB with MERN stack and NextJS :books:
 
-This project helped me create my first ever fullstack viable application. I learnt NextJS, MongoDB and NodeJS thanks to it. I learnt the basis of SEO and TailwindCSS (making me realize that pure CSS might be the most optimized solution most of the time).
+This project helped me create my first fullstack viable application. I learnt NextJS, MongoDB and NodeJS thanks to it. I learnt the basis of SEO and TailwindCSS (making me realize that pure CSS might be the most optimized solution most of the time).
 
 # **Landing page**
 
